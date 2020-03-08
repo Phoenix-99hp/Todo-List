@@ -82,7 +82,7 @@ function colorDate(priority) {
 }
 
 function validateInputs(title, description, date, priority) {
-    if ((/^[\w\d\s-’':]+$/.test(title) === true) && (title.length <= 50) && (/^[\w\d\s-'’.,?!;:]*$/.test(description) === true) && (/^[\d-\/]+$/.test(date) === true) && ((/^\w+$/).test(priority) === true)) {
+    if ((/^[\w\d\s-'’.,?!;:$()@#%&]+$/.test(title) === true) && (title.length <= 50) && (/^[\w\d\s-'’.,?!;:$()@#%&]*$/.test(description) === true) && (/^[\d-\/]+$/.test(date) === true) && ((/^\w+$/).test(priority) === true)) {
         return true
     }
     else { return false }
@@ -131,18 +131,18 @@ function addKeyupListenersNew(title, description, date, priority) {
     const valDate = document.getElementById("validateDate");
     const valPriority = document.getElementById("validatePriority");
     title.addEventListener("keyup", (e) => {
-        if ((/^[\w\d\s-'’:]+$/.test(title.value) === true) && (title.value.length <= 50)) {
+        if ((/^[\w\d\s-'’.,?!;:$()@#%&]+$/.test(title.value) === true) && (title.value.length <= 50)) {
             valTitle.classList.remove("show");
         }
-        else if ((/^[\w\d\s-'’:]+$/.test(title.value) === false) || (title.value.length > 50)) {
+        else if ((/^[\w\d\s-'’.,?!;:$()@#%&]+$/.test(title.value) === false) || (title.value.length > 50)) {
             valTitle.classList.add("show");
         }
     });
     description.addEventListener("keyup", (e) => {
-        if (/^[\w\d\s-'’.,?!;:]*$/.test(description.value) === true) {
+        if (/^[\w\d\s-'’.,?!;:$()@#%&]*$/.test(description.value) === true) {
             valDescription.classList.remove("show");
         }
-        else if (/^[\w\d\s-'’.,?!;:]*$/.test(description.value) === false) {
+        else if (/^[\w\d\s-'’.,?!;:$()@#%&]*$/.test(description.value) === false) {
             valDescription.classList.add("show");
         }
     });
@@ -170,18 +170,18 @@ function addKeyupListenersEdit(title, description, date, priority) {
     const valDate = document.getElementById("validateDateEdit");
     const valPriority = document.getElementById("validatePriorityEdit");
     title.addEventListener("keyup", (e) => {
-        if ((/^[\w\d\s-’':]+$/.test(title.value) === true) && (title.value.length <= 50)) {
+        if ((/^[\w\d\s-'’.,?!;:$()@#%&]+$/.test(title.value) === true) && (title.value.length <= 50)) {
             valTitle.classList.remove("show");
         }
-        else if ((/^[\w\d\s-’':]+$/.test(title.value) === false) || (title.value.length > 50)) {
+        else if ((/^[\w\d\s-'’.,?!;:$()@#%&]+$/.test(title.value) === false) || (title.value.length > 50)) {
             valTitle.classList.add("show");
         }
     });
     description.addEventListener("keyup", (e) => {
-        if (/^[\w\d\s-'’.,?!;:]*$/.test(description.value) === true) {
+        if (/^[\w\d\s-'’.,?!;:$()@#%&]*$/.test(description.value) === true) {
             valDescription.classList.remove("show");
         }
-        else if (/^[\w\d\s-’'.,?!;:]*$/.test(description.value) === false) {
+        else if (/^[\w\d\s-'’.,?!;:$()@#%&]*$/.test(description.value) === false) {
             valDescription.classList.add("show");
         }
     });
