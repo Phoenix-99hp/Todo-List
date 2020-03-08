@@ -1,6 +1,6 @@
 # Todo-List
 
-Deployed: 
+Deployed: https://phoenix-99hp.github.io/Todo-List/
 
 This is a todo list that I made while following the Odin Project's Curriculum. It was made using webpack and different modules were exported between files. 
 
