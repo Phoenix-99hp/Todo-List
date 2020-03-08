@@ -3,6 +3,7 @@ import showHome from "./home.js";
 import showNewModal from "./newModal.js"
 import showEditModal from "./editModal.js";
 import "../assets/css/style.css";
+import "../assets/images/apple-touch-icon.png"
 
 const contentDiv = document.getElementById("content");
 
