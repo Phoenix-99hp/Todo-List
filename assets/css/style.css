@@ -325,6 +325,7 @@ label {
     word-wrap: break-word;
     flex-flow: row wrap;
     flex-wrap: wrap;
+    white-space: pre-wrap;
 }
 
 .editBtn{

@@ -83,7 +83,7 @@ function colorDate(priority) {
 }
 
 function validateInputs(title, description, date, priority) {
-    if ((/^[\w\d\s-'’.,?!;:$()@#%&]+$/.test(title) === true) && (title.length <= 50) && (/^[\w\d\s-'’.,?!;:$()@#%&]*$/.test(description) === true) && (/^[\d-\/]+$/.test(date) === true) && ((/^\w+$/).test(priority) === true)) {
+    if ((/^[^<>]+$/.test(title) === true) && (title.length <= 50) && (/^[^<>]*$/.test(description) === true) && (/^[\d-\/]+$/.test(date) === true) && ((/^\w+$/).test(priority) === true)) {
         return true
     }
     else { return false }
@@ -132,18 +132,18 @@ function addKeyupListenersNew(title, description, date, priority) {
     const valDate = document.getElementById("validateDate");
     const valPriority = document.getElementById("validatePriority");
     title.addEventListener("keyup", (e) => {
-        if ((/^[\w\d\s-'’.,?!;:$()@#%&]+$/.test(title.value) === true) && (title.value.length <= 50)) {
+        if ((/^[^<>]+$/.test(title.value) === true) && (title.value.length <= 50)) {
             valTitle.classList.remove("show");
         }
-        else if ((/^[\w\d\s-'’.,?!;:$()@#%&]+$/.test(title.value) === false) || (title.value.length > 50)) {
+        else if ((/^[^<>]+$/.test(title.value) === false) || (title.value.length > 50)) {
             valTitle.classList.add("show");
         }
     });
     description.addEventListener("keyup", (e) => {
-        if (/^[\w\d\s-'’.,?!;:$()@#%&]*$/.test(description.value) === true) {
+        if (/^[^<>]*$/.test(description.value) === true) {
             valDescription.classList.remove("show");
         }
-        else if (/^[\w\d\s-'’.,?!;:$()@#%&]*$/.test(description.value) === false) {
+        else if (/^[^<>]*$/.test(description.value) === false) {
             valDescription.classList.add("show");
         }
     });
@@ -171,18 +171,18 @@ function addKeyupListenersEdit(title, description, date, priority) {
     const valDate = document.getElementById("validateDateEdit");
     const valPriority = document.getElementById("validatePriorityEdit");
     title.addEventListener("keyup", (e) => {
-        if ((/^[\w\d\s-'’.,?!;:$()@#%&]+$/.test(title.value) === true) && (title.value.length <= 50)) {
+        if ((/^[^<>]+$/.test(title.value) === true) && (title.value.length <= 50)) {
             valTitle.classList.remove("show");
         }
-        else if ((/^[\w\d\s-'’.,?!;:$()@#%&]+$/.test(title.value) === false) || (title.value.length > 50)) {
+        else if ((/^[^<>]+$/.test(title.value) === false) || (title.value.length > 50)) {
             valTitle.classList.add("show");
         }
     });
     description.addEventListener("keyup", (e) => {
-        if (/^[\w\d\s-'’.,?!;:$()@#%&]*$/.test(description.value) === true) {
+        if (/^[^<>]*$/.test(description.value) === true) {
             valDescription.classList.remove("show");
         }
-        else if (/^[\w\d\s-'’.,?!;:$()@#%&]*$/.test(description.value) === false) {
+        else if (/^[^<>]*$/.test(description.value) === false) {
             valDescription.classList.add("show");
         }
     });
@@ -214,13 +214,13 @@ function addEvtListenersNew(list) {
         const newDueDate = document.getElementById("newDueDate");
         const newPriority = document.getElementById("newPriority");
         if ((list.length === 0) && (validateInputs(newTitle.value, newDescription.value, newDueDate.value, newPriority.value) === true)) {
-            const newTodoItem = new Todo(newTitle.value.trim(), newDescription.value.trim(), newDueDate.value, newPriority.value, 0)
+            const newTodoItem = new Todo(newTitle.value.trim(), newDescription.value, newDueDate.value, newPriority.value, 0)
             list.push(newTodoItem);
             generateHTML();
             storeTodos();
         }
         else if (validateInputs(newTitle.value, newDescription.value, newDueDate.value, newPriority.value) === true) {
-            const newTodoItem = new Todo(newTitle.value.trim(), newDescription.value.trim(), newDueDate.value, newPriority.value, list.length)
+            const newTodoItem = new Todo(newTitle.value.trim(), newDescription.value, newDueDate.value, newPriority.value, list.length)
             list.push(newTodoItem);
             generateHTML();
             storeTodos();
@@ -268,7 +268,7 @@ function addEvtListenersEdit() {
         for (let i = 0; i < todos.length; i++) {
             if ((selectedTodoId == todos[i].id) && (validateInputs(editTitle.value, editDescription.value, editDueDate.value, editPriority.value)) === true) {
                 todos[i].title = editTitle.value.trim();
-                todos[i].description = editDescription.value.trim();
+                todos[i].description = editDescription.value;
                 todos[i].dueDate = editDueDate.value;
                 if (editPriority.selectedIndex == 1) {
                     todos[i].priority = "High";
