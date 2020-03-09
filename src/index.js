@@ -106,7 +106,6 @@ function generateHTML() {
                     <div class="todo">
                         <h4 class="title">${todos[i].title}</h4>
                         <p class="dueDate ${coloredDate}">${translatedDate}</p>
-                        <div class="priority"></div>
                         <p class="idHolder">${todos[i].id}</p>
                         <p class="description inactive">${todos[i].description}</p>
                     </div>
