@@ -316,7 +316,7 @@ function addEvtListenersMain() {
     document.querySelectorAll(".editBtn").forEach((button) => {
         button.addEventListener("click", (e) => {
             e.preventDefault();
-            selectedTodoId = button.previousElementSibling.children[3].innerText;
+            selectedTodoId = button.previousElementSibling.lastElementChild.previousElementSibling.innerText;
             showEditModal();
             addEvtListenersEdit();
             const editTitle = document.getElementById("editTitle");
