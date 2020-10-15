@@ -1,4 +1,5 @@
 const path = require('path');
+const HWP = require("html-webpack-plugin");
 
 module.exports = {
     entry: './src/index.js',
@@ -21,10 +22,15 @@ module.exports = {
                     'file-loader',
                 ],
             },
-            {
-                test: /\.html$/i,
-                loader: 'html-loader',
-            },
+            // {
+            //     test: /\.html$/i,
+            //     loader: 'html-loader',
+            // },
         ],
     },
+    plugins: [
+        new HWP(
+            { template: path.join(__dirname, "/dist/index.html") }
+        )
+    ]
 };
